@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  dinov3_image_classification_jupyterlab:
+    build:
+      context: ./notebooks
+      dockerfile: Dockerfile
+    image: dinov3_image_classification_jupyterlab
+    container_name: dinov3_image_classification_jupyterlab
+    ipc: host
+    ports:
+      - 8654:8888
+    volumes:
+      - ./notebooks:/notebooks
+    restart: always
+    deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
