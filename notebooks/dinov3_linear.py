@@ -1,7 +1,7 @@
 import torch.nn as nn
 from transformers import AutoModel
 
-class DinoV3Linear(nn.Module):
+class DinoV3MLP(nn.Module):
     def __init__(self, backbone: AutoModel, num_classes: int, freeze_backbone: bool = True):
         super().__init__()
         self.backbone = backbone
